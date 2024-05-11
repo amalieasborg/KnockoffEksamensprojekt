@@ -2,6 +2,7 @@ package org.example.knockoffeksamensprojekt.Repository;
 
 import org.example.knockoffeksamensprojekt.Model.Dish;
 import org.example.knockoffeksamensprojekt.Model.Ingredient;
+import org.example.knockoffeksamensprojekt.Model.Recipe;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -98,7 +99,7 @@ public class DBController {
             sql="SELECT * FROM dish";
             return jdbcTemplate.query(sql,dishRowmapper());
         }catch(DataAccessException e){
-            throw new RuntimeException("Error finding all dishes");
+            throw new RuntimeException("Error finding all dishes", e);
         }
     }
 
@@ -110,4 +111,26 @@ public class DBController {
             return dish;
         };
     }
+
+    public List<Recipe> findAllRecipes(){
+        try {
+            sql="SELECT * FROM recipe";
+            return jdbcTemplate.query(sql,recipeRowmapper());
+        }catch(DataAccessException e){
+            throw new RuntimeException("Error while finding all recipes",e);
+        }
+    }
+
+    public RowMapper<Recipe> recipeRowmapper(){
+        return(rs, rowNum) ->{
+            Recipe recipe = new Recipe();
+            recipe.setCalories(rs.getInt("calories"));
+            recipe.setProtein(rs.getInt("protein"));
+            recipe.setFat(rs.getInt("fat"));
+            recipe.setCarbs(rs.getInt("carbs"));
+            recipe.setDescription(rs.getString("description"));
+            return recipe;
+        };
+    }
+
 }
