@@ -129,22 +129,4 @@ public class User {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", fname='" + fname + '\'' +
-                ", ename='" + sname + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", age=" + age +
-                ", gender=" + gender +
-                ", activityLevel=" + activityLevel +
-                ", goal=" + goal +
-                ", role=" + role +
-                '}';
-    }
 }
