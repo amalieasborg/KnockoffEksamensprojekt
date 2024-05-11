@@ -2,7 +2,7 @@ package org.example.knockoffeksamensprojekt.Model;
 
 public class User {
     private Long userId;
-    private String fname, ename, password, email, phoneNumber;
+    private String fname, sname, password, email, phoneNumber;
     private double weight;
     private int height, age, gender, activityLevel, goal, role;
 
@@ -12,7 +12,7 @@ public class User {
     public User(Long userId, String fname, String ename, String password, String email, String phoneNumber, double weight, int height, int age, int gender, int activityLevel, int goal, int role) {
         this.userId = userId;
         this.fname = fname;
-        this.ename = ename;
+        this.sname = ename;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -41,12 +41,12 @@ public class User {
         this.fname = fname;
     }
 
-    public String getEname() {
-        return ename;
+    public String getSname() {
+        return sname;
     }
 
-    public void setEname(String ename) {
-        this.ename = ename;
+    public void setSname(String sname) {
+        this.sname = sname;
     }
 
     public String getPassword() {
@@ -134,7 +134,7 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", fname='" + fname + '\'' +
-                ", ename='" + ename + '\'' +
+                ", ename='" + sname + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
