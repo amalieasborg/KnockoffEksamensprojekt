@@ -24,4 +24,21 @@ public class Usecase {
         return dbController.findAllRecipes();
     }
 
+    public Double calculateBMR(){
+        //I teorien skal denne metode udregne en brugers BMR ud fra deres køn. 0 er mand, 1 er kvinde
+        if(user.getGender()==0){
+            Double menBMR=((10*user.getWeight())+(6.25*user.getHeight())-(5* user.getAge())+5);
+            return menBMR;
+        }
+        else{
+            Double womenBMR=((10*user.getWeight())+(6.25*user.getHeight())-(5* user.getAge())-161);
+            return womenBMR;
+        }
+    }
+    public Double calculateDailyCalories(){
+        return calculateBMR()* user.getActivityLevel();
+        //I teorien skal denne metode udregne en brugers daglige kalorieindtag ved at gange deres BMR med deres aktivitetsniveau
+    }
+
 }
+
