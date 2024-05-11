@@ -1,22 +1,28 @@
 package org.example.knockoffeksamensprojekt.Model;
 
-public class User extends Person{
+public class User {
     private Long userId;
-    private String height;
-    private String weight;
-    private String age;
-    private boolean gender;
+    private String fname, ename, password, email, phoneNumber;
+    private double weight;
+    private int height, age, gender, activityLevel, goal, role;
 
     public User() {
     }
 
-    public User(String fname, String ename, String password, String email, String phoneNumber, Long userId, String height, String weight, String age, boolean gender) {
-        super(fname, ename, password, email, phoneNumber);
+    public User(Long userId, String fname, String ename, String password, String email, String phoneNumber, double weight, int height, int age, int gender, int activityLevel, int goal, int role) {
         this.userId = userId;
-        this.height = height;
+        this.fname = fname;
+        this.ename = ename;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.weight = weight;
+        this.height = height;
         this.age = age;
         this.gender = gender;
+        this.activityLevel = activityLevel;
+        this.goal = goal;
+        this.role = role;
     }
 
     public Long getUserId() {
@@ -27,35 +33,118 @@ public class User extends Person{
         this.userId = userId;
     }
 
-    public String getHeight() {
-        return height;
+    public String getFname() {
+        return fname;
     }
 
-    public void setHeight(String height) {
-        this.height = height;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getWeight() {
+    public String getEname() {
+        return ename;
+    }
+
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public String getAge() {
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public boolean isGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public int getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(int activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", fname='" + fname + '\'' +
+                ", ename='" + ename + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", activityLevel=" + activityLevel +
+                ", goal=" + goal +
+                ", role=" + role +
+                '}';
     }
 }
