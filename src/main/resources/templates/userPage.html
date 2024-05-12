@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bruger side</title>
+</head>
+<body>
+<h1>Velkommen til din side</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th> Navn </th>
+
+        <th> Type </th>
+
+        <th> Kalorier </th>
+
+        <th> Protein </th>
+
+        <th> Fedt </th>
+
+        <th> Kulhydrater </th>
+
+        <th> Beskrivelse </th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <tr th:each="dish : ${dish}">
+        <td th:text="${dish.name}">Navn</td>
+        <td th:text="${dish.type}">Type</td>
+    </tr>
+
+    <tr th:each="recipe : ${recipe}">
+        <td th:text="${recipe.calories}">Kalorier</td>
+        <td th:text="${recipe.protein}">Protein</td>
+        <td th:text="${recipe.fat}">Fedt</td>
+        <td th:text="${recipe.carbs}">Kulhydrater</td>
+        <td th:text="${recipe.description}">Beskrivelse</td>
+    </tr>
+
+
+    </tbody>
+
+</table>
+
+
+</body>
+</html>
