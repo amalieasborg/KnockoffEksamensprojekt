@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>opret bruger</title>
+    <title>Opret bruger</title>
 </head>
 <body>
-<h1>opret en ny bruger</h1>
+<h1>Opret en ny bruger</h1>
 
-<form action ="#" th:action="@{/createUpdateUser}" th:object="${user}" method = "post">
+<form action ="#" th:action="@{/createUpdateUser}" th:object="${MyUser}" method = "post">
     <label for="fname">First Name:</label>
     <input type="text" id="fname" th:field="*{fname}"/>
 

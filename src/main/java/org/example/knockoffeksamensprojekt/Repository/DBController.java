@@ -2,37 +2,36 @@ package org.example.knockoffeksamensprojekt.Repository;
 
 import org.example.knockoffeksamensprojekt.Model.Dish;
 import org.example.knockoffeksamensprojekt.Model.Ingredient;
+import org.example.knockoffeksamensprojekt.Model.MyUser;
 import org.example.knockoffeksamensprojekt.Model.Recipe;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.example.knockoffeksamensprojekt.Model.User;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public class DBController {
     private JdbcTemplate jdbcTemplate;
-    String sql;
+    private String sql;
 
     public DBController(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
 
 
-    public User createUpdateUser (User user){
+    public MyUser createUpdateUser (MyUser myUser){
         try {
-            if(user.getUserId()==null){
+            if(myUser.getUserId()==null){
                 sql="INSERT INTO user(userid,fname,sname,password,email,phoneNumber,weight,height,age,gender,activityLevel,goal,role) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                jdbcTemplate.update(sql,user.getUserId(),user.getFname(),user.getSname(),user.getPassword(),user.getEmail(),user.getPhoneNumber(),user.getWeight(),user.getHeight(),user.getAge(),user.getGender(),user.getActivityLevel(),user.getGoal(),user.getRole());
+                jdbcTemplate.update(sql, myUser.getUserId(), myUser.getFname(), myUser.getSname(), myUser.getPassword(), myUser.getEmail(), myUser.getPhoneNumber(), myUser.getWeight(), myUser.getHeight(), myUser.getAge(), myUser.getGender(), myUser.getActivityLevel(), myUser.getGoal(), myUser.getRole());
             }else{
-                sql = "UPDATE user SET fname=?,sname=?,password=?,email=?,phoneNumber=?,weight=?,height=?,age=?,gender=?,activityLevel=?,goal=?,role=? WHERE userId="+String.valueOf(user.getUserId());
-                jdbcTemplate.update(sql,user.getUserId(),user.getFname(),user.getSname(),user.getPassword(),user.getEmail(),user.getPhoneNumber(),user.getWeight(),user.getHeight(),user.getAge(),user.getGender(),user.getActivityLevel(),user.getGoal(),user.getRole());
-            }return user;
+                sql = "UPDATE user SET fname=?,sname=?,password=?,email=?,phoneNumber=?,weight=?,height=?,age=?,gender=?,activityLevel=?,goal=?,role=? WHERE userId="+String.valueOf(myUser.getUserId());
+                jdbcTemplate.update(sql, myUser.getUserId(), myUser.getFname(), myUser.getSname(), myUser.getPassword(), myUser.getEmail(), myUser.getPhoneNumber(), myUser.getWeight(), myUser.getHeight(), myUser.getAge(), myUser.getGender(), myUser.getActivityLevel(), myUser.getGoal(), myUser.getRole());
+            }return myUser;
         } catch(DataAccessException e){
             throw new RuntimeException("Error creating user", e);
         }
@@ -42,11 +41,11 @@ public class DBController {
         jdbcTemplate.update(sql,userId);
     }
 
-    public Optional<User> findUserById(Long userId){
+    public Optional<MyUser> findUserById(Long userId){
         try {
             sql = "SELECT * FROM user WHERE userId=?";
-            User user = jdbcTemplate.queryForObject(sql, new Object[]{userId},userRowmapper());
-            return Optional.ofNullable(user);
+            MyUser myUser = jdbcTemplate.queryForObject(sql, new Object[]{userId},userRowmapper());
+            return Optional.ofNullable(myUser);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty(); // Return empty Optional if no user is found
         } catch(DataAccessException e){
@@ -54,23 +53,23 @@ public class DBController {
         }
     }
 
-    private RowMapper<User> userRowmapper(){
+    private RowMapper<MyUser> userRowmapper(){
         return (rs, rowNum) ->{
-            User user = new User();
-            user.setUserId(rs.getLong("userId"));
-            user.setFname(rs.getString("fname"));
-            user.setSname(rs.getString("sname"));
-            user.setPassword(rs.getString("password"));
-            user.setEmail(rs.getString("email"));
-            user.setPhoneNumber(rs.getString("phoneNumber"));
-            user.setWeight(rs.getDouble("weight"));
-            user.setHeight(rs.getInt("height"));
-            user.setAge(rs.getInt("age"));
-            user.setGender(rs.getInt("gender"));
-            user.setActivityLevel(rs.getInt("activityLevel"));
-            user.setGoal(rs.getInt("goal"));
-            user.setRole(rs.getInt("role"));
-            return user;
+            MyUser myUser = new MyUser();
+            myUser.setUserId(rs.getLong("userId"));
+            myUser.setFname(rs.getString("fname"));
+            myUser.setSname(rs.getString("sname"));
+            myUser.setPassword(rs.getString("password"));
+            myUser.setEmail(rs.getString("email"));
+            myUser.setPhoneNumber(rs.getString("phoneNumber"));
+            myUser.setWeight(rs.getDouble("weight"));
+            myUser.setHeight(rs.getInt("height"));
+            myUser.setAge(rs.getInt("age"));
+            myUser.setGender(rs.getInt("gender"));
+            myUser.setActivityLevel(rs.getInt("activityLevel"));
+            myUser.setGoal(rs.getInt("goal"));
+            myUser.setRole(rs.getString("role"));
+            return myUser;
         };
     }
 

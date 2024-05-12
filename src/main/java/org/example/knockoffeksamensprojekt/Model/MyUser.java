@@ -1,15 +1,16 @@
 package org.example.knockoffeksamensprojekt.Model;
 
-public class User {
+public class MyUser {
     private Long userId;
     private String fname, sname, password, email, phoneNumber;
     private double weight;
-    private int height, age, gender, activityLevel, goal, role;
+    private int height, age, gender, activityLevel, goal;
+    private String role;
 
-    public User() {
+    public MyUser() {
     }
 
-    public User(Long userId, String fname, String ename, String password, String email, String phoneNumber, double weight, int height, int age, int gender, int activityLevel, int goal, int role) {
+    public MyUser(Long userId, String fname, String ename, String password, String email, String phoneNumber, double weight, int height, int age, int gender, int activityLevel, int goal, String role) {
         this.userId = userId;
         this.fname = fname;
         this.sname = ename;
@@ -121,11 +122,11 @@ public class User {
         this.goal = goal;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

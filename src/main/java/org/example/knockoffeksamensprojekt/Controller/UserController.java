@@ -1,13 +1,12 @@
 package org.example.knockoffeksamensprojekt.Controller;
 
-import org.example.knockoffeksamensprojekt.Model.User;
+import org.example.knockoffeksamensprojekt.Model.MyUser;
 import org.example.knockoffeksamensprojekt.Service.Usecase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 @Controller
 public class UserController {
     @Autowired
@@ -15,26 +14,26 @@ public class UserController {
 
     @GetMapping("/createUpdateUser")
     public String createUserForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("MyUser", new MyUser());
         return "createUpdateUser";
     }
     @PostMapping("/createUpdateUser")
-    public String createUser(@ModelAttribute User user){
-        usecase.createUpdateUser(user);
-        if (user.getEmail() == null)
+    public String createUser(@ModelAttribute MyUser myUser){
+        usecase.createUpdateUser(myUser);
+        if (myUser.getEmail() == null)
             return "redirect:/userCreatedSucces";
         else
             return "redirect:/userpage";
     }
     @GetMapping("/")
     public String loginForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("MyUser", new MyUser());
         return "login";
     }
 
     @GetMapping("/userCreatedSucces")
     public String userCreatedSucces(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("MyUser", new MyUser());
         return "userCreatedSucces";
     }
 
