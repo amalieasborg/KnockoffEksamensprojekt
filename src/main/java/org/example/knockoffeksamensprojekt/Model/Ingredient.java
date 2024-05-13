@@ -3,18 +3,20 @@ package org.example.knockoffeksamensprojekt.Model;
 public class Ingredient {
     private Long ingredientId;
     private String name;
-    private int calories, protein, fat, carbs;
+    private double calories, protein, fat, carbs;
+    private double weight;
 
     public Ingredient() {
     }
 
-    public Ingredient(Long ingredientId, String name, int calories, int protein, int fat, int carbs) {
+    public Ingredient(Long ingredientId, String name, double calories, double protein, double fat, double carbs, double weight) {
         this.ingredientId = ingredientId;
         this.name = name;
         this.calories = calories;
         this.protein = protein;
         this.fat = fat;
         this.carbs = carbs;
+        this.weight = weight;
     }
 
     public Long getIngredientId() {
@@ -33,35 +35,44 @@ public class Ingredient {
         this.name = name;
     }
 
-    public int getCalories() {
+    public double getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(double calories) {
         this.calories = calories;
     }
 
-    public int getProtein() {
+    public double getProtein() {
         return protein;
     }
 
-    public void setProtein(int protein) {
+    public void setProtein(double protein) {
         this.protein = protein;
     }
 
-    public int getFat() {
+    public double getFat() {
         return fat;
     }
 
-    public void setFat(int fat) {
+    public void setFat(double fat) {
         this.fat = fat;
     }
 
-    public int getCarbs() {
+    public double getCarbs() {
         return carbs;
     }
 
-    public void setCarbs(int carbs) {
+    public void setCarbs(double carbs) {
         this.carbs = carbs;
     }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
 }

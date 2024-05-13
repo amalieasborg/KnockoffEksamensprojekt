@@ -3,14 +3,14 @@ package org.example.knockoffeksamensprojekt.Model;
 public class MyUser {
     private Long userId;
     private String fname, sname, password, email, phoneNumber;
-    private double weight;
-    private int height, age, gender, activityLevel, goal;
+    private double weight, activityLevel;
+    private int height, age, gender, goal;
     private String role;
 
     public MyUser() {
     }
 
-    public MyUser(Long userId, String fname, String ename, String password, String email, String phoneNumber, double weight, int height, int age, int gender, int activityLevel, int goal, String role) {
+    public MyUser(Long userId, String fname, String ename, String password, String email, String phoneNumber, double weight, int height, int age, int gender, double activityLevel, int goal, String role) {
         this.userId = userId;
         this.fname = fname;
         this.sname = ename;
@@ -106,11 +106,11 @@ public class MyUser {
         this.gender = gender;
     }
 
-    public int getActivityLevel() {
+    public double getActivityLevel() {
         return activityLevel;
     }
 
-    public void setActivityLevel(int activityLevel) {
+    public void setActivityLevel(double activityLevel) {
         this.activityLevel = activityLevel;
     }
 

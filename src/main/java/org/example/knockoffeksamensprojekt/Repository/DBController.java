@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -130,5 +131,21 @@ public class DBController {
             return recipe;
         };
     }
+
+
+
+
+
+
+    public Optional<MyUser> findUserByEmail(String email) {
+        try {
+            String sql = "SELECT * FROM user WHERE email = ?";
+            MyUser user = jdbcTemplate.queryForObject(sql, new Object[]{email}, userRowmapper());
+            return Optional.ofNullable(user);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty(); // Returner tomt Optional hvis ingen bruger er fundet
+        }
+    }
+
 
 }

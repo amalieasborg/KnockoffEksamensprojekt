@@ -1,11 +1,13 @@
 package org.example.knockoffeksamensprojekt.Service;
 
+import org.example.knockoffeksamensprojekt.Model.Ingredient;
 import org.example.knockoffeksamensprojekt.Model.Recipe;
 import org.example.knockoffeksamensprojekt.Repository.DBController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.example.knockoffeksamensprojekt.Model.MyUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +17,8 @@ public class Usecase {
     private DBController dbController;
     private MyUser myUser;
     private Recipe recipe;
+    private Ingredient ingredient;
+    private ArrayList<Ingredient> ingredientListForDish;
 
     public void createUpdateUser(MyUser myUser){
         dbController.createUpdateUser(myUser);
@@ -24,7 +28,7 @@ public class Usecase {
         return dbController.findAllRecipes();
     }
 
-    public Double calculateBMR(){
+    public Double calculateBMR(MyUser myUser){
         //I teorien skal denne metode udregne en brugers BMR ud fra deres køn. 0 er mand, 1 er kvinde
         if(myUser.getGender()==0){
             Double menBMR=((10* myUser.getWeight())+(6.25* myUser.getHeight())-(5* myUser.getAge())+5);
@@ -35,10 +39,30 @@ public class Usecase {
             return womenBMR;
         }
     }
-    public Double calculateDailyCalories(){
+    /*public Double maybeCalculateDailyCalories(){
         return calculateBMR()* myUser.getActivityLevel();
         //I teorien skal denne metode udregne en brugers daglige kalorieindtag ved at gange deres BMR med deres aktivitetsniveau
-    }
+    }*/
+
+    /*public Double calculateDailyCalories(MyUser myUser){
+        if (myUser.getActivityLevel()==0){
+            return calculateBMR(myUser)*1.2;
+        }
+        else if (myUser.getActivityLevel()==1) {
+            return calculateBMR(myUser)*1.375;
+        }
+        else if (myUser.getActivityLevel()==2) {
+            return calculateBMR(myUser)*1.55;
+        }
+        else if (myUser.getActivityLevel()==3) {
+            return calculateBMR(myUser)*1.725;
+        }
+        else if (myUser.getActivityLevel()==4) {
+            return calculateBMR(myUser)*1.9;
+        } return null;
+    }*/
+
+
 
 }
 
