@@ -36,4 +36,9 @@ class UsecaseTest {
             // Asserting that the calculated BMR matches the expected value
             assertEquals(expectedBMR, actualBMR);
         }
+
+        @Test
+    public void testcalculateDailyCalories(){
+
+        }
     }

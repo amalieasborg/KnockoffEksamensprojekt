@@ -44,7 +44,7 @@ public class Usecase {
         //I teorien skal denne metode udregne en brugers daglige kalorieindtag ved at gange deres BMR med deres aktivitetsniveau
     }*/
 
-    /*public Double calculateDailyCalories(MyUser myUser){
+    public Double calculateDailyCalories(MyUser myUser){
         if (myUser.getActivityLevel()==0){
             return calculateBMR(myUser)*1.2;
         }
@@ -60,7 +60,7 @@ public class Usecase {
         else if (myUser.getActivityLevel()==4) {
             return calculateBMR(myUser)*1.9;
         } return null;
-    }*/
+    }
 
 
 
